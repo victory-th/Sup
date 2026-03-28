@@ -1,0 +1,18 @@
+
+workflows:
+  react-native-android-build:
+    name: React Native Android Build
+    working_directory: client-app/VictoryGame
+    environment:
+      node: 18.19.0
+      java: 11
+    scripts:
+      - name: Install npm dependencies
+        script: |
+          npm install
+      - name: Build Android debug APK
+        script: |
+          cd android && ./gradlew assembleDebug
+    artifacts:
+      - android/app/build/outputs/apk/debug/*.apk
+
