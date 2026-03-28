@@ -6,6 +6,8 @@
 
   # Use https://search.nixos.org/packages to find packages
   packages = [
+    pkgs.jdk
+    pkgs.android-sdk
     # pkgs.go
     # pkgs.python311
     # pkgs.python311Packages.pip
@@ -14,7 +16,10 @@
   ];
 
   # Sets environment variables in the workspace
-  env = {};
+  env = {
+    ANDROID_SDK_ROOT = "${pkgs.android-sdk}/libexec/android-sdk";
+    JAVA_HOME = pkgs.jdk;
+  };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
